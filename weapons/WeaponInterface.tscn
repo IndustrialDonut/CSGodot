@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://weapons/WeaponInterface.gd" id="1_h2n5s"]
 [ext_resource type="Script" path="res://weapons/ToggleableSpecialPolicy.gd" id="2_ht806"]
 [ext_resource type="PackedScene" uid="uid://cneduk5w7y6g3" path="res://components/firemodes/rof_strategy.tscn" id="3_0xhcg"]
-[ext_resource type="Script" uid="uid://ccnwtq4vulhsq" path="res://weapons/Shooter.gd" id="4_8h6q5"]
+[ext_resource type="Script" path="res://weapons/Shooter.gd" id="4_8h6q5"]
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_h2n5s")

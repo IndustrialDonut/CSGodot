@@ -8,21 +8,22 @@ func _ready():
 	$MobilityPolicy.set_policy('walk')
 	$MobilityPolicy.activate()
 	
+	$FirePolicy.set_script(preload("res://components/firemodes/semi_auto.gd"))
+	
 	#$HUD.set_weapon_component($Weapon)
 	#$HUD.set_health_component($Health)
 
 
-#func _process(delta):
+func _process(delta):
 	#if Input.is_action_just_pressed("rmb"):
-		#$Weapon.special()
-	#if Input.is_action_pressed("lmb"):
-		#$Weapon.fire()
+		#special()
+	if Input.is_action_pressed("lmb"):
+		fire()
 
 
 func fire() -> void:
 	# LMB
 	if $FirePolicy.squeeze():
-		print("bang!")
 		$Shooter.shoot()
 
 

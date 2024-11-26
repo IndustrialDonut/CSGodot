@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2n1vebh46h2v"]
+[gd_scene load_steps=13 format=3 uid="uid://c2n1vebh46h2v"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_6731a"]
 [ext_resource type="Script" path="res://components/MovementPolicy.gd" id="1_ndf45"]
@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://weapons/ToggleableSpecialPolicy.gd" id="5_7wg0y"]
 [ext_resource type="PackedScene" uid="uid://cneduk5w7y6g3" path="res://components/firemodes/rof_strategy.tscn" id="6_1upqr"]
 [ext_resource type="Script" path="res://magazine_reload_policy.gd" id="6_q0i8v"]
-[ext_resource type="Script" uid="uid://ccnwtq4vulhsq" path="res://weapons/Shooter.gd" id="7_6ujti"]
+[ext_resource type="Script" path="res://weapons/Shooter.gd" id="7_6ujti"]
 [ext_resource type="PackedScene" uid="uid://degmr2i0lyaj0" path="res://camera/camera_orbiter.tscn" id="9_lb7n8"]
+[ext_resource type="PackedScene" uid="uid://cej4v44851q1h" path="res://models/G18.tscn" id="10_fdvcf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0f75c"]
 
@@ -29,8 +30,14 @@ mesh = SubResource("CapsuleMesh_sp7ss")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84836, 0)
 
 [node name="Shooter" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21, 1.145, -0.49)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5686, 0)
 script = ExtResource("7_6ujti")
+
+[node name="RayCast3D" type="RayCast3D" parent="Shooter"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Inventory" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -39,6 +46,9 @@ script = ExtResource("4_e32n7")
 [node name="PrimarySlot" type="Node3D" parent="Inventory"]
 
 [node name="SecondarySlot" type="Node3D" parent="Inventory"]
+
+[node name="G18" parent="Inventory/SecondarySlot" instance=ExtResource("10_fdvcf")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0.368311, 0.144143, -0.715856)
 
 [node name="LethalSlot" type="Node3D" parent="Inventory"]
 

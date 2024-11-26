@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://xregipbsn55h"]
+[gd_scene load_steps=8 format=3 uid="uid://xregipbsn55h"]
 
 [ext_resource type="Texture2D" uid="uid://dsv4jm4vydflb" path="res://textures/orange.png" id="1_a3ukf"]
 [ext_resource type="Script" path="res://Main.gd" id="1_bufwj"]
 [ext_resource type="PackedScene" uid="uid://c2n1vebh46h2v" path="res://Player.tscn" id="2_pd4mg"]
+[ext_resource type="PackedScene" uid="uid://coteqnf5oxr7c" path="res://prop/prop.tscn" id="4_rfhvu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bj43f"]
 albedo_texture = ExtResource("1_a3ukf")
@@ -32,3 +33,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30282, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.839022, 0, -0.544097, 0.158861, 0.956427, 0.24497, 0.520389, -0.291971, 0.802464, 0, 9.57933, 0)
 shadow_enabled = true
+
+[node name="Prop" parent="." instance=ExtResource("4_rfhvu")]
