@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdr1x4gv5mbya"]
+
+[ext_resource type="Script" path="res://TEST/order_test.gd" id="1_ivr2d"]
+
+[node name="TestProcessingOrder" type="Node2D"]
+
+[node name="A" type="Node" parent="."]
+script = ExtResource("1_ivr2d")
+
+[node name="B" type="Node" parent="A"]
+script = ExtResource("1_ivr2d")
+
+[node name="C" type="Node" parent="."]
+script = ExtResource("1_ivr2d")

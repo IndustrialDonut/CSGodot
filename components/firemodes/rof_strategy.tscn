@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cneduk5w7y6g3"]
+
+[ext_resource type="Script" uid="uid://1ax2mgphg0ta" path="res://components/firemodes/rof_strategy.gd" id="1_isnqo"]
+
+[node name="FireMode" type="Node"]
+script = ExtResource("1_isnqo")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

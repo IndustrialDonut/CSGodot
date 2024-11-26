@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2n1vebh46h2v"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_6731a"]
+[ext_resource type="Script" path="res://components/MovementPolicy.gd" id="1_ndf45"]
+[ext_resource type="Script" path="res://player_hud.gd" id="4_1kqjs"]
+[ext_resource type="Script" path="res://inventory.gd" id="4_e32n7"]
+[ext_resource type="Script" path="res://weapons/ToggleableSpecialPolicy.gd" id="5_7wg0y"]
+[ext_resource type="PackedScene" uid="uid://cneduk5w7y6g3" path="res://components/firemodes/rof_strategy.tscn" id="6_1upqr"]
+[ext_resource type="Script" path="res://magazine_reload_policy.gd" id="6_q0i8v"]
+[ext_resource type="Script" uid="uid://ccnwtq4vulhsq" path="res://weapons/Shooter.gd" id="7_6ujti"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0f75c"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sp7ss"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_6731a")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0f75c")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_sp7ss")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1832, 5.49175)
+
+[node name="Shooter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21, 1.145, -0.49)
+script = ExtResource("7_6ujti")
+
+[node name="Inventory" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_e32n7")
+
+[node name="PrimarySlot" type="Node3D" parent="Inventory"]
+
+[node name="SecondarySlot" type="Node3D" parent="Inventory"]
+
+[node name="LethalSlot" type="Node3D" parent="Inventory"]
+
+[node name="NonLethalSlot" type="Node3D" parent="Inventory"]
+
+[node name="SmokeSlot" type="Node3D" parent="Inventory"]
+
+[node name="KnifeSlot" type="Node3D" parent="Inventory"]
+
+[node name="BombSlot" type="Node3D" parent="Inventory"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_1kqjs")
+
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+value = 6.56
+
+[node name="AmmoLabel" type="Label" parent="HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -82.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "30 / 210"
+
+[node name="WeaponWheel" type="VBoxContainer" parent="HUD"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -190.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Primary" type="CenterContainer" parent="HUD/WeaponWheel"]
+layout_mode = 2
+
+[node name="Secondary" type="CenterContainer" parent="HUD/WeaponWheel"]
+layout_mode = 2
+
+[node name="Lethal" type="CenterContainer" parent="HUD/WeaponWheel"]
+layout_mode = 2
+
+[node name="Nonlethal" type="CenterContainer" parent="HUD/WeaponWheel"]
+layout_mode = 2
+
+[node name="Smoke" type="CenterContainer" parent="HUD/WeaponWheel"]
+layout_mode = 2
+
+[node name="Knife" type="CenterContainer" parent="HUD/WeaponWheel"]
+layout_mode = 2
+
+[node name="SpecialPolicy" type="Node" parent="."]
+script = ExtResource("5_7wg0y")
+
+[node name="ReloadPolicy" type="Node" parent="."]
+script = ExtResource("6_q0i8v")
+
+[node name="FirePolicy" parent="." instance=ExtResource("6_1upqr")]
+
+[node name="MobilityPolicy" type="Node" parent="."]
+script = ExtResource("1_ndf45")

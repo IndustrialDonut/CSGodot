@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d361fctqkfk06"]
+
+[ext_resource type="Script" uid="uid://dcln3n4w8ej6i" path="res://TEST/test_scene_branch_swapping.gd" id="1_tkxw4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3noh5"]
+
+[node name="TestSceneBranchSwapping" type="Node3D"]
+script = ExtResource("1_tkxw4")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="SomeBranch" type="Marker3D" parent="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/SomeBranch"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/SomeBranch/StaticBody3D"]
+shape = SubResource("BoxShape3D_3noh5")

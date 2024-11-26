@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxi5mlj76yycm"]
+
+[ext_resource type="Script" path="res://TEST/test_get_node_cache.gd" id="1_st0la"]
+
+[node name="TestGetNodeCache" type="Node3D"]
+script = ExtResource("1_st0la")
+
+[node name="A" type="Node3D" parent="."]
+
+[node name="B" type="Node3D" parent="."]

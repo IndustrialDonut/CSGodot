@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dle8m3ds0q07b"]
+
+[ext_resource type="Script" path="res://weapons/WeaponInterface.gd" id="1_h2n5s"]
+[ext_resource type="Script" path="res://weapons/ToggleableSpecialPolicy.gd" id="2_ht806"]
+[ext_resource type="PackedScene" uid="uid://cneduk5w7y6g3" path="res://components/firemodes/rof_strategy.tscn" id="3_0xhcg"]
+[ext_resource type="Script" uid="uid://ccnwtq4vulhsq" path="res://weapons/Shooter.gd" id="4_8h6q5"]
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_h2n5s")
+
+[node name="SpecialPolicy" type="Node" parent="."]
+script = ExtResource("2_ht806")
+
+[node name="ReloadPolicy" type="Node" parent="."]
+
+[node name="FirePolicy" parent="." instance=ExtResource("3_0xhcg")]
+
+[node name="Shooter" type="Node3D" parent="."]
+script = ExtResource("4_8h6q5")
