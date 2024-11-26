@@ -1,15 +1,10 @@
 extends CharacterBody3D
 
 
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		pass
-
-
 func _ready():
 	# Inject component dependencies
 	$MobilityPolicy.set_body(self)
+	$MobilityPolicy.set_head($CameraOrbiter)
 	$MobilityPolicy.set_policy('walk')
 	$MobilityPolicy.activate()
 	

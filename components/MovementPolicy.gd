@@ -19,6 +19,7 @@ extends Node
 ## wiping instance variables. Yeah that's a pain in the ass forget that.
 
 var is_active = false
+var head : Node3D # for determining direction
 var body : CharacterBody3D
 var policy
 
@@ -37,7 +38,7 @@ func _physics_process(delta):
 		return
 	
 	if policy:
-		policy.process_movement(body, delta)
+		policy.process_movement(body, head, delta)
 	else:
 		printerr("No movement policy set")
 
@@ -48,6 +49,10 @@ func activate():
 
 func deactivate():
 	is_active = false
+
+
+func set_head(head: Node3D):
+	self.head = head
 
 
 func set_body(body : CharacterBody3D):

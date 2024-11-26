@@ -14,7 +14,7 @@ var state = STANDING
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
-func process_movement(body : CharacterBody3D, delta : float):
+func process_movement(body : CharacterBody3D, head :Node3D, delta : float):
 	# Add the gravity.
 	if not body.is_on_floor():
 		state = FALLING
@@ -33,7 +33,7 @@ func process_movement(body : CharacterBody3D, delta : float):
 			# Only can walk (no jump), max-speed limited to half
 			if not Input.is_action_pressed("control"):
 				state = STANDING
-			_accelerate(0.5, body)
+			_accelerate(0.5, body, head)
 			bodymesh.mesh.height = 1.5
 			bodymesh.position.y = 0.75
 		STANDING:
@@ -47,25 +47,25 @@ func process_movement(body : CharacterBody3D, delta : float):
 			elif Input.is_action_pressed("sprint"):
 				# the 'key' for sprint is just shift but in CSGO actually slow-walk.
 				coef = 0.5
-			_accelerate(coef, body)
+			_accelerate(coef, body, head)
 		_:
 			printerr("Invalid Player Movement State")
 			#state = STANDING
 	
 	body.move_and_slide()
-	print(state)
+	#print(state)
 
 
-func _input_target_direction(body : Node3D):
+func _input_target_direction(head : Node3D):
 	## Get the user input for the target direction, and transform it into global coordinates
 	## based on the Node3D orientation given.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	var direction = (body.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	return direction
 
 
-func _accelerate(speed_coefficient : float, body : CharacterBody3D):
-	var direction = _input_target_direction(body)
+func _accelerate(speed_coefficient : float, body : CharacterBody3D, head: Node3D):
+	var direction = _input_target_direction(head)
 	var wishspeed = SPEED * speed_coefficient
 	
 	# Propel or interpolate speed back to zero.
