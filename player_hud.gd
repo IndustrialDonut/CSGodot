@@ -16,6 +16,7 @@ var weapon_component
 var mobility_component
 var inventory_component
 var fire_policy
+var ammo_policy : ReloadMode
 
 
 func _process(delta: float) -> void:
@@ -26,6 +27,8 @@ func _process(delta: float) -> void:
 		'burst',
 	]
 	$FireMode.text = modes[fire_policy.mode]
+	
+	_report_ammo(ammo_policy.remaining_rounds, ammo_policy.remaining_other_rounds)
 	#_report_health(health_component)
 	#_report_ammo(weapon_component)
 	#report_stance(mobility_component)
@@ -36,10 +39,8 @@ func _report_health(health_component):
 	$HealthBar.value = health_component.hp
 
 
-func _report_ammo(weapon):
-	var loaded_ammo = weapon.get_loaded_ammo()
-	var other_ammo = weapon.get_other_ammo()
-	$AmmoLabel.text = "%d / %d" % [loaded_ammo, other_ammo]
+func _report_ammo(loaded, other):
+	$AmmoLabel.text = "%d / %d" % [loaded, other]
 
 
 
