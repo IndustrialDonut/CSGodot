@@ -35,10 +35,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5686, 0)
 script = ExtResource("7_6ujti")
 
 [node name="RayCast3D" type="RayCast3D" parent="Shooter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.525242)
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Marker3D" type="Marker3D" parent="Shooter"]
+transform = Transform3D(1, 0, 0, 0, 0.858289, -0.513167, 0, 0.513167, 0.858289, 0, -0.176877, -0.817091)
 
 [node name="EquippedModel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268327, 1.26313, -0.729502)
@@ -71,6 +75,7 @@ script = ExtResource("5_3rfg8")
 script = ExtResource("5_3rfg8")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
 script = ExtResource("4_1kqjs")
 
 [node name="HealthBar" type="ProgressBar" parent="HUD"]
@@ -136,6 +141,21 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Fire Mode"
 
+[node name="Scope" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Scope" type="TextureRect" parent="Scope"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -216.0
+offset_right = 384.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_uuveq")
+
 [node name="SpecialPolicy" type="Node" parent="."]
 script = ExtResource("7_60vyr")
 
@@ -147,11 +167,4 @@ script = ExtResource("6_q0i8v")
 [node name="MobilityPolicy" type="Node" parent="."]
 script = ExtResource("1_ndf45")
 
-[node name="Scope" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_uuveq")
+[connection signal="weapon_switching" from="Inventory" to="." method="_on_inventory_weapon_switching"]

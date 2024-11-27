@@ -9,3 +9,4 @@ script = ExtResource("1_kqj2n")
 
 [node name="Camera3D" type="Camera3D" parent="VBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0037)
+fov = 90.0

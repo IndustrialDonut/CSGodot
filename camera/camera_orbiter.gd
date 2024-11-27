@@ -23,3 +23,11 @@ func _process(delta: float) -> void:
 		$VBase/Camera3D.translate_object_local(Vector3.FORWARD * scroll_sensitivity)
 	elif Input.is_action_just_released("zoom_out"):
 		$VBase/Camera3D.translate_object_local(-Vector3.FORWARD * scroll_sensitivity)
+
+
+func set_fov(deg : float):
+	$VBase/Camera3D.fov = deg
+
+
+func get_fov() -> float:
+	return $VBase/Camera3D.fov
