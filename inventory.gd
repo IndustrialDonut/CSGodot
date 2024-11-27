@@ -45,3 +45,5 @@ func _map_config_to_components(config):
 	_player.set_weapon_model(config.model)
 	_player.set_fire_mode(config.firemode)
 	_player.set_special(config.special)
+	_player.set_mag_size(config.magsize)
+	_player.set_reload_mode(config.magmode)
