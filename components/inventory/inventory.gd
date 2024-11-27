@@ -1,6 +1,9 @@
 extends Node3D
 
 
+signal weapon_switching
+
+
 @onready var weapon_slot_map = {
 	Enums.PRIMARY : $PrimarySlot,
 	Enums.SECONDARY : $SecondarySlot,
@@ -30,6 +33,7 @@ func equip(enum_):
 	var config = slot.weapon_config
 	
 	if config:
+		weapon_switching.emit()
 		_map_config_to_components(config)
 		slot.hide()
 		

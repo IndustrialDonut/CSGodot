@@ -13,6 +13,10 @@ func execute(x):
 	toggleable.toggle([x])
 
 
+func cancel(x):
+	pass # suppressor stays on after switch
+
+
 # Getters and setters
 func set_suppressor(suppressed_shootable):
 	suppressed_shootable = suppressed_shootable

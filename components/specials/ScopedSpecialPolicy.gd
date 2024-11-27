@@ -2,18 +2,25 @@ extends Node
 class_name ScopedSpecial
 
 var t = Toggle.new(_apply, _remove)
+var old_fov : float
 
 # Public interface
 func execute(x):
 	t.toggle([x])
 
 
+func cancel(x):
+	_remove(x)
+
+
 func _apply(player):
 	player.show_scope()
-	get_tree().root.get_camera_3d().fov = 45
+	old_fov = player.get_fov()
+	player.set_fov(45)
 
 
 func _remove(player):
 	player.hide_scope()
-	get_tree().root.get_camera_3d().fov = 75
+	if old_fov:
+		player.set_fov(old_fov)
 

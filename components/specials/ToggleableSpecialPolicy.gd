@@ -18,6 +18,10 @@ func execute(x):
 	toggleable.toggle([x])
 
 
+func cancel(x):
+	pass # firemode should persist after weapon switch.
+
+
 # Getters and setters
 func set_toggleable_firemode(f):
 	fire_mode_override = f

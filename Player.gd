@@ -99,3 +99,15 @@ func show_scope():
 
 func hide_scope():
 	$Scope.hide()
+
+
+func set_fov(deg):
+	$CameraOrbiter.set_fov(deg)
+
+
+func get_fov():
+	return $CameraOrbiter.get_fov()
+
+
+func _on_inventory_weapon_switching() -> void:
+	$SpecialPolicy.cancel(self)
