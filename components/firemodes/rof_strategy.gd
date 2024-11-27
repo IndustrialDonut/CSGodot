@@ -11,7 +11,6 @@ var timer_wait_time : float = 0.1
 func squeeze() -> bool:
 	# return ready to fire status
 	printerr("SQUEEZE NOT IMPLEMENTED in rof_strategy.gd (base class)")
-	assert(false) # not implemented
 	return false
 
 

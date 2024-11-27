@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://components/MovementPolicy.gd" id="1_ndf45"]
 [ext_resource type="Script" path="res://player_hud.gd" id="4_1kqjs"]
 [ext_resource type="Script" path="res://inventory.gd" id="4_e32n7"]
+[ext_resource type="Script" path="res://slot.gd" id="5_3rfg8"]
 [ext_resource type="Script" path="res://weapons/ToggleableSpecialPolicy.gd" id="5_7wg0y"]
 [ext_resource type="PackedScene" uid="uid://cneduk5w7y6g3" path="res://components/firemodes/rof_strategy.tscn" id="6_1upqr"]
 [ext_resource type="Script" path="res://magazine_reload_policy.gd" id="6_q0i8v"]
 [ext_resource type="Script" path="res://weapons/Shooter.gd" id="7_6ujti"]
 [ext_resource type="PackedScene" uid="uid://degmr2i0lyaj0" path="res://camera/camera_orbiter.tscn" id="9_lb7n8"]
-[ext_resource type="PackedScene" uid="uid://cej4v44851q1h" path="res://models/G18.tscn" id="10_fdvcf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0f75c"]
 
@@ -39,26 +39,34 @@ collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="EquippedModel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268327, 1.26313, -0.729502)
+
 [node name="Inventory" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("4_e32n7")
 
 [node name="PrimarySlot" type="Node3D" parent="Inventory"]
+script = ExtResource("5_3rfg8")
 
 [node name="SecondarySlot" type="Node3D" parent="Inventory"]
-
-[node name="G18" parent="Inventory/SecondarySlot" instance=ExtResource("10_fdvcf")]
-transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0.368311, 0.144143, -0.715856)
+transform = Transform3D(1, 0, 0, 0, 0.679057, 0.734086, 0, -0.734086, 0.679057, 0.659477, 0, 0)
+script = ExtResource("5_3rfg8")
 
 [node name="LethalSlot" type="Node3D" parent="Inventory"]
+script = ExtResource("5_3rfg8")
 
 [node name="NonLethalSlot" type="Node3D" parent="Inventory"]
+script = ExtResource("5_3rfg8")
 
 [node name="SmokeSlot" type="Node3D" parent="Inventory"]
+script = ExtResource("5_3rfg8")
 
 [node name="KnifeSlot" type="Node3D" parent="Inventory"]
+script = ExtResource("5_3rfg8")
 
 [node name="BombSlot" type="Node3D" parent="Inventory"]
+script = ExtResource("5_3rfg8")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("4_1kqjs")
@@ -66,7 +74,8 @@ script = ExtResource("4_1kqjs")
 [node name="HealthBar" type="ProgressBar" parent="HUD"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 27.0
+offset_right = -846.0
+offset_bottom = 45.0
 grow_horizontal = 2
 value = 6.56
 
@@ -112,6 +121,18 @@ layout_mode = 2
 
 [node name="Knife" type="CenterContainer" parent="HUD/WeaponWheel"]
 layout_mode = 2
+
+[node name="FireMode" type="Label" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -84.0
+offset_right = 137.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Fire Mode"
 
 [node name="SpecialPolicy" type="Node" parent="."]
 script = ExtResource("5_7wg0y")

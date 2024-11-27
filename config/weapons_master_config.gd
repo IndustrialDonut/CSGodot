@@ -2,11 +2,13 @@ class_name MasterConfig extends Object
 
 
 static var config = {
-	
-	# need some kind of recoil parameter, either here or on the bullet types themselves
-	# but probably easiest to have a recoil vector here with comps x, y, z
-	# that represent the 'RMS' recoil per direction
-	
+	"G18" : {
+		"slot_code": Enums.SECONDARY,
+		"firemode": "res://components/firemodes/semi_auto.gd",
+		"special": "res://weapons/ToggleableSpecialPolicy.gd",
+		"mass" : 1.5,
+		"model": "res://models/G18.tscn",
+	},
 	"SCAR-H" : {
 		"magazine_protocol": "STANAG",
 		"fire_modes": [

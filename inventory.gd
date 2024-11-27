@@ -11,38 +11,36 @@ extends Node3D
 	Enums.BOMB : $BombSlot,
 }
 
+var _player
+#var _equipped : Node3D
+#var _last_equipped : Node3D
+
 
 func add_weapon(weapon):
 	var slot = weapon_slot_map[weapon.slot_code]
-	slot.set_weapon(weapon)
-
-
-
-#
-#
-#func set_weapon(weapon):
-	#var slots = get_children()
-	#var slot = slots[weapon.slot_index]
 	#slot.set_weapon(weapon)
+	slot.add_child(
+		load(weapon.model).instantiate()
+	)
+	slot.weapon_config = weapon
 
 
+func equip(enum_):
+	var slot = weapon_slot_map[enum_]
+	var config = slot.weapon_config
+	
+	if config:
+		_map_config_to_components(config)
+		slot.hide()
+		
+		#_last_equipped = _equipped
+		#_equipped = slot
 
-#func switch_weapon(weapon):
-	#match weapon.slot_code:
-		#'primary':
-			#$PrimarySlot.set_weapon(weapon)
-		#'secondary':
-			#$SecondarySlot.set_weapon(weapon)
-		#'lethal':
-			#$LethalSlot.set_weapon(weapon)
-		#'nonlethal':
-			#$NonLethalSlot.set_weapon(weapon)
-		#'smoke':
-			#$SmokeSlot.set_weapon(weapon)
-		#'knife':
-			#$KnifeSlot.set_weapon(weapon)
-		#'bomb':
-			#$BombSlot.set_weapon(weapon)
-		#_:
-			#printerr("Error: Weapon Slot Code does not exist.")
-			#return -1
+
+func set_player(player):
+	self._player = player
+
+
+func _map_config_to_components(config):
+	_player.set_weapon_model(config.model)
+	_player.set_fire_mode(config.firemode)

@@ -8,6 +8,10 @@ var fire_mode_override : FireMode
 var toggleable := Toggle.new(_override_fire_mode, _restore_fire_mode)
 
 
+func _init(f: FireMode) -> void:
+	set_toggleable_firemode(f)
+
+
 # Public interface
 func execute(weapon : Weapon):
 	toggleable.toggle([weapon])
