@@ -1,4 +1,5 @@
 extends Node
+class_name  ToggleableSpecial
 ## Toggle between a given new FireMode and the Weapon's original fire mode.
 
 var fire_mode
