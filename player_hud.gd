@@ -15,10 +15,17 @@ var health_component
 var weapon_component
 var mobility_component
 var inventory_component
+var fire_policy
 
 
 func _process(delta: float) -> void:
-	pass
+	var modes = [
+		'safe',
+		'semi',
+		'full',
+		'burst',
+	]
+	$FireMode.text = modes[fire_policy.mode]
 	#_report_health(health_component)
 	#_report_ammo(weapon_component)
 	#report_stance(mobility_component)

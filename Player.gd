@@ -15,6 +15,7 @@ func _ready():
 	
 	#$HUD.set_weapon_component($Weapon)
 	#$HUD.set_health_component($Health)
+	$HUD.fire_policy = $FirePolicy
 
 
 func _process(delta):
@@ -30,8 +31,7 @@ func _process(delta):
 
 func fire() -> void:
 	# LMB
-	if $FirePolicy.squeeze():
-		$Shooter.shoot()
+	$FirePolicy.squeeze($Shooter.shoot)
 
 
 func special() -> void:
@@ -46,14 +46,12 @@ func reload() -> void:
 
 
 # Getters and setters
-func set_fire_mode(firemode : String) -> void:
-	var p = load(firemode)
-	assert(p, "Cannot assign null firemode (use specific NoFire if this is your intent)")
-	$FirePolicy.set_script(p)
+func set_fire_mode(firemode) -> void:
+	$FirePolicy.mode = firemode
 
 
 func get_fire_mode():
-	return $FirePolicy.get_script().resource_path
+	return $FirePolicy.mode
 
 
 func set_shooter(shooter : Node) -> void:

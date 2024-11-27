@@ -1,7 +1,7 @@
 extends Area3D
 
 
-var health = 100
+var health = 1000
 
 
 func _ready() -> void:
