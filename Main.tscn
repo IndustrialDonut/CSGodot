@@ -35,3 +35,4 @@ transform = Transform3D(0.839022, 0, -0.544097, 0.158861, 0.956427, 0.24497, 0.5
 shadow_enabled = true
 
 [node name="Prop" parent="." instance=ExtResource("4_rfhvu")]
+collision_mask = 0
