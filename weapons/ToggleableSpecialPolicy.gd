@@ -1,32 +1,32 @@
 extends Node
 ## Toggle between a given new FireMode and the Weapon's original fire mode.
 
-var fire_mode : FireMode
-var fire_mode_override : FireMode
+var fire_mode
+var fire_mode_override
 
 @onready
 var toggleable := Toggle.new(_override_fire_mode, _restore_fire_mode)
 
 
-func _init(f: FireMode) -> void:
+func _init(f) -> void:
 	set_toggleable_firemode(f)
 
 
 # Public interface
-func execute(weapon : Weapon):
-	toggleable.toggle([weapon])
+func execute(x):
+	toggleable.toggle([x])
 
 
 # Getters and setters
-func set_toggleable_firemode(f : FireMode):
+func set_toggleable_firemode(f):
 	fire_mode_override = f
 
 
 # Private methods
-func _override_fire_mode(weapon : Weapon):
-	fire_mode = weapon.get_fire_mode()
-	weapon.set_fire_mode(fire_mode_override)
+func _override_fire_mode(x):
+	fire_mode = x.get_fire_mode()
+	x.set_fire_mode(fire_mode_override)
 
 
-func _restore_fire_mode(weapon : Weapon):
-	weapon.set_fire_mode(fire_mode)
+func _restore_fire_mode(x):
+	x.set_fire_mode(fire_mode)

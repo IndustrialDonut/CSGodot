@@ -22,8 +22,8 @@ func _process(delta):
 		#$Inventory.last_weapon()
 	if Input.is_action_just_pressed("secondary"):
 		$Inventory.equip(Enums.SECONDARY)
-	#if Input.is_action_just_pressed("rmb"):
-		#special()
+	if Input.is_action_just_pressed("rmb"):
+		special()
 	if Input.is_action_pressed("lmb"):
 		fire()
 
@@ -36,6 +36,7 @@ func fire() -> void:
 
 func special() -> void:
 	# RMB
+	print("Executing special..", $SpecialPolicy)
 	$SpecialPolicy.execute(self)
 
 
@@ -51,8 +52,8 @@ func set_fire_mode(firemode : String) -> void:
 	$FirePolicy.set_script(p)
 
 
-func get_fire_mode() -> FireMode:
-	return $FirePolicy.get_script()
+func get_fire_mode():
+	return $FirePolicy.get_script().resource_path
 
 
 func set_shooter(shooter : Node) -> void:
@@ -76,3 +77,10 @@ func set_weapon_model(model : String) -> void:
 		child.queue_free()
 	
 	$EquippedModel.add_child(load(model).instantiate())
+
+
+func set_special(special : Node):
+	#var p = load(special)
+	assert(special, "Cannot assign null special (use specific NoSpecial if this is your intent)")
+	#$SpecialPolicy.set_script(special)
+	Swapper.swap_subbranches($SpecialPolicy, special)

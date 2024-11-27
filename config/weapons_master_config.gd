@@ -5,7 +5,9 @@ static var config = {
 	"G18" : {
 		"slot_code": Enums.SECONDARY,
 		"firemode": "res://components/firemodes/semi_auto.gd",
-		"special": "res://weapons/ToggleableSpecialPolicy.gd",
+		"special": load("res://weapons/ToggleableSpecialPolicy.gd").new(
+			"res://components/firemodes/full_auto.gd"
+		),
 		"mass" : 1.5,
 		"model": "res://models/G18.tscn",
 	},
