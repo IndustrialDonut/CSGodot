@@ -20,4 +20,13 @@ static var config = {
 		"magsize": 4,
 		"magmode": ReloadMode.SINGLE,
 	},
+	"AWP" : {
+		"slot_code": Enums.PRIMARY,
+		"firemode": FireMode.SEMI,
+		"special": ScopedSpecial.new(),
+		"mass" : 5,
+		"model": "res://models/AWP.tscn",
+		"magsize": 4,
+		"magmode": ReloadMode.SINGLE,
+	},
 }

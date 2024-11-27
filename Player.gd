@@ -14,7 +14,7 @@ func _ready():
 	
 	var g18 = MasterConfig.config['G18']
 	$Inventory.add_weapon(g18)
-	var g18p = MasterConfig.config['G18-P']
+	var g18p = MasterConfig.config['AWP']
 	$Inventory.add_weapon(g18p)
 	
 	#$HUD.set_weapon_component($Weapon)
@@ -91,3 +91,11 @@ func set_special(special : Node):
 	assert(special, "Cannot assign null special (use specific NoSpecial if this is your intent)")
 	#$SpecialPolicy.set_script(special)
 	Swapper.swap_subbranches($SpecialPolicy, special)
+
+
+func show_scope():
+	$Scope.show()
+
+
+func hide_scope():
+	$Scope.hide()

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bawfl3gtwyvy4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h8x1a"]
+size = Vector3(0.2, 0.2, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iqd7w"]
+size = Vector3(0.2, 0.2, 0.7)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7gw7m"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[node name="AWP" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, -0.619615)
+mesh = SubResource("BoxMesh_h8x1a")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, -0.129955, -0.119609)
+mesh = SubResource("BoxMesh_iqd7w")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.65, 0, 0, 0, -2.84124e-08, 0.65, 0, -0.65, -2.84124e-08, 0, 0.185552, -0.346882)
+mesh = SubResource("CylinderMesh_7gw7m")
+skeleton = NodePath("")

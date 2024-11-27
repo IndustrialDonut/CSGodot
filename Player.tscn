@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2n1vebh46h2v"]
+[gd_scene load_steps=14 format=3 uid="uid://c2n1vebh46h2v"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_6731a"]
 [ext_resource type="Script" path="res://components/MovementPolicy.gd" id="1_ndf45"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://magazine_reload_policy.gd" id="6_q0i8v"]
 [ext_resource type="Script" path="res://weapons/Shooter.gd" id="7_6ujti"]
 [ext_resource type="PackedScene" uid="uid://degmr2i0lyaj0" path="res://camera/camera_orbiter.tscn" id="9_lb7n8"]
+[ext_resource type="Texture2D" uid="uid://d30ipc4aifxed" path="res://textures/scope_empty.png" id="11_uuveq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0f75c"]
 
@@ -145,3 +146,12 @@ script = ExtResource("6_q0i8v")
 
 [node name="MobilityPolicy" type="Node" parent="."]
 script = ExtResource("1_ndf45")
+
+[node name="Scope" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_uuveq")
