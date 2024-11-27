@@ -47,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("4_e32n7")
 
 [node name="PrimarySlot" type="Node3D" parent="Inventory"]
+transform = Transform3D(0.137548, -0.930767, -0.338753, 7.45058e-09, 0.342004, -0.939699, 0.990495, 0.129254, 0.047042, 0, 0.510375, 0.874965)
 script = ExtResource("5_3rfg8")
 
 [node name="SecondarySlot" type="Node3D" parent="Inventory"]
