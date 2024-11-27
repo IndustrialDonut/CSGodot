@@ -28,8 +28,8 @@ var policy
 # with only a subset allowed, then define that in terms of the
 # mobility policy keywords he can cycle through.
 var mobility_policies = {
-	'fly' : load("res://components/FlyMovementPolicy.gd"),
-	'walk' : load("res://components/WalkMovementPolicy.gd"),
+	'fly' : load("res://components/movement/FlyMovementPolicy.gd"),
+	'walk' : load("res://components/movement/WalkMovementPolicy.gd"),
 }
 
 
