@@ -1,32 +1,20 @@
-extends Node
+extends ToggleSpecial
+class_name SuppressedSpecial
 
-var original_shootable : Node
-var suppressed_shootable : Node
+# Construct with the overriding object (the desired suppressor)
 
-@onready
-var toggleable := Toggle.new(_attach_suppressor, _detach_suppressor)
+# You can override the constructor to make it static what type you can 
+# / should take as the overriding object type, since this will affect
+# what happens later when actually applied to the player or weapon.
+#func _init(o : Toggle) -> void:
+	#self.set_override(o)
 
-
-# Public interface
-func execute(x):
-	#var weapon = get_parent()
-	toggleable.toggle([x])
-
-
-func cancel(x):
-	pass # suppressor stays on after switch
-
-
-# Getters and setters
-func set_suppressor(suppressed_shootable):
-	suppressed_shootable = suppressed_shootable
+# Then, by changing the behavior of _override and _restore
+# We will now override the SHOOTABLE on the weapon or player.
+func _override(x):
+	the_original = x.get_shootable()
+	x.set_shootable(the_override)
 
 
-# Private methods
-func _attach_suppressor(weapon):
-	original_shootable = weapon.get_shootable()
-	weapon.set_shootable(suppressed_shootable)
-
-
-func _detach_suppressor(weapon ):
-	weapon.set_shootable(original_shootable)
+func _restore(x):
+	x.set_shootable(the_original)

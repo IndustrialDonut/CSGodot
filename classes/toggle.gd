@@ -15,3 +15,9 @@ func toggle(arg_array : Array = []):
 	else:
 		restore.callv(arg_array)
 	is_toggled = not is_toggled
+
+
+# func reset():
+# reset the toggle back to the starting position but without applying
+# or restoring anything
+# just set 'is_toggled' to false , I guess
