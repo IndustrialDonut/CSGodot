@@ -25,9 +25,15 @@ func _process(delta: float) -> void:
 		$VBase/Camera3D.translate_object_local(-Vector3.FORWARD * scroll_sensitivity)
 
 
-func set_fov(deg : float):
-	$VBase/Camera3D.fov = deg
+func get_camera():
+	return $VBase/Camera3D
 
 
-func get_fov() -> float:
-	return $VBase/Camera3D.fov
+func set_camera(cam):
+	#$VBase/Camera3D.replace_by(cam) # would assume the camera has 
+	# no children..
+	
+	# Instead, be sure and swap the subscene out.
+	var t = $VBase/Camera3D.global_transform
+	Swapper.swap_subbranches($VBase/Camera3D, cam)
+	cam.global_transform = t

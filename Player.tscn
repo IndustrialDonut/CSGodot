@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2n1vebh46h2v"]
+[gd_scene load_steps=13 format=3 uid="uid://c2n1vebh46h2v"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_6731a"]
 [ext_resource type="Script" path="res://components/movement/MovementPolicy.gd" id="1_ndf45"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://components/Shooter.gd" id="7_6ujti"]
 [ext_resource type="Script" path="res://components/specials/NoSpecialPolicy.gd" id="7_60vyr"]
 [ext_resource type="PackedScene" uid="uid://degmr2i0lyaj0" path="res://camera/camera_orbiter.tscn" id="9_lb7n8"]
-[ext_resource type="Texture2D" uid="uid://d30ipc4aifxed" path="res://textures/scope_empty.png" id="11_uuveq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0f75c"]
 
@@ -140,21 +139,6 @@ offset_bottom = -28.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Fire Mode"
-
-[node name="Scope" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Scope" type="TextureRect" parent="Scope"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -384.0
-offset_top = -216.0
-offset_right = 384.0
-offset_bottom = 216.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_uuveq")
 
 [node name="SpecialPolicy" type="Node" parent="."]
 script = ExtResource("7_60vyr")

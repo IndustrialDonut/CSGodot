@@ -39,18 +39,18 @@ func _process(delta):
 
 
 func fire() -> void:
-	# LMB
+	## LMB
 	$FirePolicy.squeeze($Shooter.shoot)
 
 
 func special() -> void:
-	# RMB
+	## RMB
 	print("Executing special..", $SpecialPolicy)
 	$SpecialPolicy.execute(self)
 
 
 func reload() -> void:
-	# R
+	## R
 	$ReloadPolicy.reload()
 
 
@@ -87,26 +87,16 @@ func set_weapon_model(model : String) -> void:
 
 
 func set_special(special : Node):
-	#var p = load(special)
 	assert(special, "Cannot assign null special (use specific NoSpecial if this is your intent)")
-	#$SpecialPolicy.set_script(special)
 	Swapper.swap_subbranches($SpecialPolicy, special)
 
 
-func show_scope():
-	$Scope.show()
+func set_camera(cam):
+	$CameraOrbiter.set_camera(cam)
 
 
-func hide_scope():
-	$Scope.hide()
-
-
-func set_fov(deg):
-	$CameraOrbiter.set_fov(deg)
-
-
-func get_fov():
-	return $CameraOrbiter.get_fov()
+func get_camera():
+	return $CameraOrbiter.get_camera()
 
 
 func _on_inventory_weapon_switching() -> void:
