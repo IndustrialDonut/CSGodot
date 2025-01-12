@@ -1,5 +1,5 @@
 extends Node3D
-
+class_name Shooter
 
 ## Different implementations for normal raycast, physical projectile,
 ## and shotgun bursts, and possibly knives..
@@ -9,18 +9,27 @@ extends Node3D
 ## Collides with Areas!
 
 var ammo : ReloadMode
+var eff_sound
+var eff_light
+var map_emitter
+var emission_strength
+
+func _init(sound="", light="", emission_strength=100):
+	eff_light = sound
+	eff_light = light
+	self.emission_strength = emission_strength
+
 
 func shoot():
-	# fire hitscan or projectile
-	
 	if ammo.can_shoot():
 		ammo.decrement_ammunition()
 		
 		var collider = $RayCast3D.get_collider()
 		if collider:
 			collider.damage()
-			#print(collider)
-			#print("Dama")
-		# play sound effect
-		# play light effect
-		# emit position on minimap according to noise
+		
+		#eff_sound.play()
+		#eff_light.play()
+		
+		# For a fully suppressed shooter, emission strength = 0
+		#map_emitter.emit(emission_strength)
