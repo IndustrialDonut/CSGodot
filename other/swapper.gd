@@ -1,6 +1,6 @@
 class_name Swapper
 extends Object
-## Swap the branches of the scene tree and preserve the owner ane name
+## Swap the branches of the scene tree and preserve the owner and name
 ## information about the original branch.
 ## Return the original branch, in case you need to save it to switch
 ## back to later.
